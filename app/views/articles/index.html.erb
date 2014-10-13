@@ -1,0 +1,35 @@
+<h1>list articles</h1>
+<hr>
+
+<div>
+<%= link_to 'New article', 'articles/new' %>
+<br>
+<hr>
+</div>
+
+<table>
+	<tr>
+		<th>title:</th>
+		<th>text:</th>
+		<th colspan="2"/>
+	</tr>
+
+	<% @articles.each do |a| %>
+		<tr>
+			<td><%= a.title %></td>
+			<td><%= a.text%></td>
+			<td><%= link_to 'Show', "/articles/"+a.id.to_s() %></td>
+			<td><%= link_to 'Edit', "articles/"+a.id.to_s()+"/edit" %></td>
+			<td><%= link_to 'Destroy', "articles/"+a.id.to_s(), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+		</tr>
+
+	<% end %>
+
+		<tr>
+			<td>Total count:</td>
+			<td><%= @articles.count %></td>
+		</tr>
+			
+
+
+</table>

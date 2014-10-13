@@ -1,0 +1,32 @@
+<h2>Article Info:</h2>
+<p>
+<strong>Title:</strong>
+<%= @article.title %>
+</p>
+
+
+<p>
+<strong>Text:</strong>
+<%=  @article.text %>
+
+</p>
+
+
+<h2>Add a comment: </h2>
+<%= form_for([@article, @article.comments.build]) do |f| %>
+	<p>
+	<%= f.label :commenter %><br>
+	<%= f.text_field :commenter %><br>
+	</p>
+	
+	<p>
+	<%= f.label :body%><br>
+	<%= f.text_area :body%><br>
+	</p>
+
+	<p>
+	<%= f.submit %>
+	</p>
+<%= end %>
+
+<%= link_to 'Back', '/articles' %> | <%= link_to 'Edit' , '/articles'+article.id.to_s()+'/edit' %>
